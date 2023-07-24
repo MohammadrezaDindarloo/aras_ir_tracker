@@ -5,10 +5,14 @@
     - ' '    
     - ' '
   cameras:
+  # Right camera to connected to USB port 0-1
     - '0-1'
-    - '0-3'
+  # Left camera to connected to USB port 0-5
+    - '0-5'
   calib_files:
-    - 'params/intrinsics/5002_0.yaml'    
+  # Right camera data
+    - 'params/intrinsics/5002_0.yaml'   
+  # Left camera data
     - 'params/intrinsics/5002_1.yaml'
   apply_KD: false
   display: true
