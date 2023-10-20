@@ -60,6 +60,7 @@ def callback(reception_stamp, data):
                     print('---------------------------')
                     #Print the reprojection error as a measure of the reconstruction quality
                     print(f'{data[0]}, {e1:1.2f}, {e2:1.2f}, [{landmarks[0]:2.3f}, {landmarks[1]:2.3f}, {landmarks[2]:2.3f}]')
+                    print(landmarks.squeeze()[0:3])
                     print('---------------------------')
 
                 # If required, record the marker locations into the recorder class
@@ -88,8 +89,11 @@ if __name__=='__main__':
     with open(configs['ext_params_path'], 'rb') as f:
         ext_params = pickle.load(f)
     #Extract the projection matrices
-    P1, P2 = ext_params['P'][0], ext_params['P'][1]
+    P1 = ext_params['P'][0]
+    P2 = ext_params['P'][1]
 
+    # P1, P2 = ext_params['P1'], ext_params['P2']
+    
     #Instantiate a stereo camera object
     stereoCamera = StereoCamera(configs['cam1_params_path'], 
                                 configs['cam2_params_path'], P1, P2)
